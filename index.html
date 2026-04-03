@@ -154,28 +154,14 @@
         }
 
         .form-card {
-            background: rgba(255,255,255,0.07);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: none;
-            padding: 32px 32px 28px;
+            background: none;
+            padding: 0 0 28px;
             margin-bottom: 20px;
-            position: relative;
-            overflow: hidden;
         }
 
-        .form-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #FFD100, #ffe066);
-        }
-
-        .form-card.yellow-top::before {
-            background: linear-gradient(90deg, #003087, #1a5ccc);
+        .form-card.yellow-top {
+            border-top: 2px solid rgba(255,255,255,0.08);
+            padding-top: 28px;
         }
 
         .form-card h2 {
