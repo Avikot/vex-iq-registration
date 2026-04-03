@@ -11,7 +11,7 @@
 
         body {
             font-family: 'Inter', Arial, sans-serif;
-            background: #f0f2fa;
+            background: #1a2744;
             color: #333;
             min-height: 100vh;
         }
@@ -154,12 +154,12 @@
         }
 
         .form-card {
-            background: #fff;
+            background: rgba(255,255,255,0.07);
+            backdrop-filter: blur(10px);
             border-radius: 20px;
-            box-shadow: 0 2px 20px rgba(0,48,135,0.06), 0 0 0 1px rgba(0,48,135,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
             padding: 32px 32px 28px;
             margin-bottom: 20px;
-            border-top: none;
             position: relative;
             overflow: hidden;
         }
@@ -171,22 +171,22 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(90deg, #003087, #1a5ccc);
-        }
-
-        .form-card.yellow-top::before {
             background: linear-gradient(90deg, #FFD100, #ffe066);
         }
 
+        .form-card.yellow-top::before {
+            background: linear-gradient(90deg, #003087, #1a5ccc);
+        }
+
         .form-card h2 {
-            color: #003087;
+            color: #FFD100;
             font-size: 20px;
             font-weight: 800;
             margin-bottom: 4px;
         }
 
         .form-card .section-desc {
-            color: #8891a5;
+            color: rgba(255,255,255,0.5);
             font-size: 14px;
             margin-bottom: 24px;
             font-weight: 400;
@@ -203,13 +203,13 @@
         .field label {
             display: block;
             font-weight: 600;
-            color: #1a2744;
+            color: rgba(255,255,255,0.9);
             margin-bottom: 8px;
             font-size: 14px;
         }
 
         .field label .req {
-            color: #e53935;
+            color: #ff6b6b;
             margin-left: 2px;
         }
 
@@ -218,34 +218,39 @@
         .field select {
             width: 100%;
             padding: 13px 16px;
-            border: 1.5px solid #e0e5f0;
+            border: 1.5px solid rgba(255,255,255,0.15);
             border-radius: 12px;
             font-size: 15px;
             font-family: 'Inter', Arial, sans-serif;
             transition: all 0.2s ease;
-            background: #f8f9fc;
-            color: #333;
+            background: rgba(255,255,255,0.08);
+            color: #fff;
         }
 
         .field input::placeholder {
-            color: #b0b8c9;
+            color: rgba(255,255,255,0.3);
         }
 
         .field input:focus,
         .field select:focus {
             outline: none;
-            border-color: #003087;
-            background: #fff;
-            box-shadow: 0 0 0 3px rgba(0,48,135,0.08);
+            border-color: #FFD100;
+            background: rgba(255,255,255,0.12);
+            box-shadow: 0 0 0 3px rgba(255,209,0,0.15);
         }
 
         .field select {
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23667' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23aaa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
             background-position: right 14px center;
             padding-right: 40px;
             cursor: pointer;
+        }
+
+        .field select option {
+            background: #1a2744;
+            color: #fff;
         }
 
         /* Radio buttons */
@@ -261,30 +266,29 @@
             align-items: center;
             gap: 12px;
             padding: 13px 16px;
-            border: 1.5px solid #e0e5f0;
+            border: 1.5px solid rgba(255,255,255,0.15);
             border-radius: 12px;
             cursor: pointer;
             transition: all 0.2s ease;
-            background: #f8f9fc;
+            background: rgba(255,255,255,0.08);
         }
 
         .radio-option:hover {
-            border-color: #003087;
-            background: #f0f4ff;
-            box-shadow: 0 0 0 3px rgba(0,48,135,0.05);
+            border-color: rgba(255,209,0,0.4);
+            background: rgba(255,255,255,0.12);
         }
 
         .radio-option:has(input:checked) {
-            border-color: #003087;
-            background: #eef2ff;
-            box-shadow: 0 0 0 3px rgba(0,48,135,0.08);
+            border-color: #FFD100;
+            background: rgba(255,209,0,0.1);
+            box-shadow: 0 0 0 3px rgba(255,209,0,0.1);
         }
 
         .radio-option input[type="radio"] {
             appearance: none;
             width: 20px;
             height: 20px;
-            border: 2px solid #c0c8d8;
+            border: 2px solid rgba(255,255,255,0.3);
             border-radius: 50%;
             cursor: pointer;
             transition: all 0.2s;
@@ -293,13 +297,13 @@
         }
 
         .radio-option input[type="radio"]:checked {
-            border-color: #003087;
+            border-color: #FFD100;
             border-width: 6px;
         }
 
         .radio-option label {
             font-weight: 500;
-            color: #333;
+            color: rgba(255,255,255,0.9);
             margin-bottom: 0;
             cursor: pointer;
             font-size: 15px;
@@ -310,8 +314,8 @@
             display: block;
             width: 100%;
             padding: 17px;
-            background: linear-gradient(135deg, #003087, #1a4caa);
-            color: #fff;
+            background: #FFD100;
+            color: #002060;
             font-family: 'Inter', Arial, sans-serif;
             font-size: 17px;
             font-weight: 800;
@@ -321,22 +325,23 @@
             transition: all 0.25s ease;
             letter-spacing: 0.5px;
             text-transform: uppercase;
-            box-shadow: 0 4px 16px rgba(0,48,135,0.25);
+            box-shadow: 0 4px 20px rgba(255,209,0,0.3);
         }
 
         .submit-btn:hover {
-            background: linear-gradient(135deg, #002060, #003087);
+            background: #ffe033;
             transform: translateY(-2px);
-            box-shadow: 0 6px 24px rgba(0,48,135,0.35);
+            box-shadow: 0 6px 28px rgba(255,209,0,0.4);
         }
 
         .submit-btn:active {
             transform: translateY(0);
-            box-shadow: 0 2px 8px rgba(0,48,135,0.2);
+            box-shadow: 0 2px 10px rgba(255,209,0,0.2);
         }
 
         .submit-btn:disabled {
-            background: #8eaad4;
+            background: #5a6070;
+            color: #999;
             cursor: not-allowed;
             transform: none;
             box-shadow: none;
@@ -364,14 +369,14 @@
         }
 
         .success-msg h2 {
-            color: #003087;
+            color: #FFD100;
             font-size: 28px;
             font-weight: 800;
             margin-bottom: 10px;
         }
 
         .success-msg p {
-            color: #666;
+            color: rgba(255,255,255,0.7);
             font-size: 16px;
             line-height: 1.6;
         }
@@ -380,13 +385,13 @@
         .footer {
             text-align: center;
             padding: 24px 20px;
-            color: #aab0c0;
+            color: rgba(255,255,255,0.35);
             font-size: 13px;
             font-weight: 500;
         }
 
         .footer a {
-            color: #003087;
+            color: #FFD100;
             text-decoration: none;
             font-weight: 600;
         }
@@ -394,12 +399,12 @@
         /* Error */
         .field.error input,
         .field.error select {
-            border-color: #e53935;
-            box-shadow: 0 0 0 3px rgba(229,57,53,0.1);
+            border-color: #ff6b6b;
+            box-shadow: 0 0 0 3px rgba(255,107,107,0.15);
         }
 
         .field .error-msg {
-            color: #e53935;
+            color: #ff6b6b;
             font-size: 13px;
             font-weight: 500;
             margin-top: 6px;
@@ -439,18 +444,18 @@
             width: 10px;
             height: 10px;
             border-radius: 50%;
-            background: #d0d8e8;
+            background: rgba(255,255,255,0.2);
             transition: all 0.3s;
         }
 
         .step-dot.active {
-            background: #003087;
+            background: #FFD100;
             width: 32px;
             border-radius: 5px;
         }
 
         .step-dot.done {
-            background: #FFD100;
+            background: rgba(255,209,0,0.5);
         }
 
         @media (max-width: 600px) {
@@ -610,7 +615,7 @@
         <div class="check">&#10003;</div>
         <h2>Команду зареєстровано!</h2>
         <p>Дякуємо за реєстрацію.<br>Ми зв'яжемося з вами перед турніром.</p>
-        <p style="margin-top: 18px; color: #003087; font-weight: 700;">Слава Україні! &#x1F1FA;&#x1F1E6;</p>
+        <p style="margin-top: 18px; color: #FFD100; font-weight: 700;">Слава Україні! &#x1F1FA;&#x1F1E6;</p>
     </div>
 
     </form>
