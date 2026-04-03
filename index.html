@@ -390,147 +390,87 @@
 
         <div class="field">
             <label>Назва команди <span class="req">*</span></label>
-            <input type="text" name="team_name" required placeholder="Придумайте назву">
+            <input type="text" name="team_name" required placeholder="Ваша відповідь">
             <div class="error-msg">Введіть назву команди</div>
         </div>
 
         <div class="field">
-            <label>Клас <span class="req">*</span></label>
-            <select name="class" required>
-                <option value="" disabled selected>Оберіть клас</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-                <option>11</option>
-            </select>
-            <div class="error-msg">Оберіть клас</div>
-        </div>
-    </div>
-
-    <!-- Section 2: Members -->
-    <div class="form-card yellow-top">
-        <h2>Учасники команди</h2>
-        <p class="section-desc">2-3 учні в кожній команді</p>
-
-        <div class="field">
             <label>Капітан команди (ПІБ) <span class="req">*</span></label>
-            <input type="text" name="captain" required placeholder="Прізвище та ім'я">
+            <input type="text" name="captain" required placeholder="Ваша відповідь">
             <div class="error-msg">Введіть ПІБ капітана</div>
         </div>
 
         <div class="field">
             <label>Другий учасник (ПІБ) <span class="req">*</span></label>
-            <input type="text" name="member2" required placeholder="Прізвище та ім'я">
+            <input type="text" name="member2" required placeholder="Ваша відповідь">
             <div class="error-msg">Введіть ПІБ другого учасника</div>
         </div>
 
         <div class="field">
             <label>Третій учасник (ПІБ)</label>
-            <input type="text" name="member3" placeholder="За бажанням">
-            <div class="hint">Необов'язково — якщо у команді 3 учасники</div>
+            <input type="text" name="member3" placeholder="Ваша відповідь">
         </div>
 
         <div class="field">
-            <label>Контактний телефон (капітана або батьків) <span class="req">*</span></label>
-            <input type="tel" name="phone" required placeholder="+380...">
+            <label>Контактний номер телефону (капітана) <span class="req">*</span></label>
+            <input type="tel" name="phone" required placeholder="Ваша відповідь">
             <div class="error-msg">Введіть номер телефону</div>
         </div>
     </div>
 
-    <!-- Section 3: Experience -->
-    <div class="form-card">
+    <!-- Section 2: Experience -->
+    <div class="form-card yellow-top">
         <h2>Досвід та навички</h2>
         <p class="section-desc">Допоможе нам краще організувати турнір</p>
 
         <div class="field">
-            <label>Чи маєте досвід роботи з роботами VEX IQ? <span class="req">*</span></label>
-            <div class="radio-group">
-                <div class="radio-option">
-                    <input type="radio" name="vex_exp" id="vex_yes" value="Так" required>
-                    <label for="vex_yes">Так</label>
-                </div>
-                <div class="radio-option">
-                    <input type="radio" name="vex_exp" id="vex_some" value="Трохи">
-                    <label for="vex_some">Трохи</label>
-                </div>
-                <div class="radio-option">
-                    <input type="radio" name="vex_exp" id="vex_no" value="Ні">
-                    <label for="vex_no">Ні</label>
-                </div>
-            </div>
-        </div>
-
-        <div class="field">
             <label>Чи граєте ви в комп'ютерні ігри? <span class="req">*</span></label>
-            <div class="radio-group">
-                <div class="radio-option">
-                    <input type="radio" name="games" id="games_reg" value="Так, регулярно" required>
-                    <label for="games_reg">Так, регулярно</label>
-                </div>
-                <div class="radio-option">
-                    <input type="radio" name="games" id="games_some" value="Іноді">
-                    <label for="games_some">Іноді</label>
-                </div>
-                <div class="radio-option">
-                    <input type="radio" name="games" id="games_rare" value="Рідко">
-                    <label for="games_rare">Рідко</label>
-                </div>
-                <div class="radio-option">
-                    <input type="radio" name="games" id="games_no" value="Ні">
-                    <label for="games_no">Ні</label>
-                </div>
-            </div>
+            <select name="games" required>
+                <option value="" disabled selected>Вибрати</option>
+                <option>Так, регулярно</option>
+                <option>Іноді</option>
+                <option>Рідко</option>
+                <option>Ні</option>
+            </select>
+            <div class="error-msg">Оберіть варіант</div>
         </div>
 
         <div class="field">
             <label>Чи маєте досвід керування геймпадом (джойстиком)? <span class="req">*</span></label>
-            <div class="radio-group">
-                <div class="radio-option">
-                    <input type="radio" name="gamepad" id="gp_yes" value="Так, граю постійно" required>
-                    <label for="gp_yes">Так, граю геймпадом постійно</label>
-                </div>
-                <div class="radio-option">
-                    <input type="radio" name="gamepad" id="gp_some" value="Пробував кілька разів">
-                    <label for="gp_some">Пробував(-ла) кілька разів</label>
-                </div>
-                <div class="radio-option">
-                    <input type="radio" name="gamepad" id="gp_no" value="Ніколи">
-                    <label for="gp_no">Ніколи не тримав(-ла) в руках</label>
-                </div>
-            </div>
+            <select name="gamepad" required>
+                <option value="" disabled selected>Вибрати</option>
+                <option>Так, граю постійно</option>
+                <option>Пробував(-ла) кілька разів</option>
+                <option>Ніколи не тримав(-ла) в руках</option>
+            </select>
+            <div class="error-msg">Оберіть варіант</div>
         </div>
 
         <div class="field">
-            <label>Чи грали ви в гоночні ігри або симулятори керування? <span class="req">*</span></label>
-            <div class="radio-group">
-                <div class="radio-option">
-                    <input type="radio" name="racing" id="race_yes" value="Так" required>
-                    <label for="race_yes">Так</label>
-                </div>
-                <div class="radio-option">
-                    <input type="radio" name="racing" id="race_no" value="Ні">
-                    <label for="race_no">Ні</label>
-                </div>
-            </div>
+            <label>Чи керували ви коли-небудь радіокерованою машинкою, дроном або роботом? <span class="req">*</span></label>
+            <select name="rc_exp" required>
+                <option value="" disabled selected>Вибрати</option>
+                <option>Так, багато разів</option>
+                <option>Пробував(-ла) раз-два</option>
+                <option>Ніколи</option>
+            </select>
+            <div class="error-msg">Оберіть варіант</div>
         </div>
 
         <div class="field">
-            <label>Чи керували ви радіокерованою машинкою, дроном або роботом? <span class="req">*</span></label>
+            <label>Чи маєте досвід робототехніки? <span class="req">*</span></label>
             <div class="radio-group">
                 <div class="radio-option">
-                    <input type="radio" name="rc_exp" id="rc_yes" value="Так, багато разів" required>
-                    <label for="rc_yes">Так, багато разів</label>
+                    <input type="radio" name="robotics_exp" id="rob_yes" value="Так" required>
+                    <label for="rob_yes">Так</label>
                 </div>
                 <div class="radio-option">
-                    <input type="radio" name="rc_exp" id="rc_some" value="Пробував раз-два">
-                    <label for="rc_some">Пробував(-ла) раз-два</label>
+                    <input type="radio" name="robotics_exp" id="rob_no" value="Ні">
+                    <label for="rob_no">Ні</label>
                 </div>
                 <div class="radio-option">
-                    <input type="radio" name="rc_exp" id="rc_no" value="Ніколи">
-                    <label for="rc_no">Ніколи</label>
+                    <input type="radio" name="robotics_exp" id="rob_some" value="Зовсім трішки">
+                    <label for="rob_some">Зовсім трішки</label>
                 </div>
             </div>
         </div>
@@ -590,16 +530,14 @@ form.addEventListener('submit', async (e) => {
     const data = {
         timestamp: new Date().toLocaleString('uk-UA'),
         team_name: form.team_name.value.trim(),
-        class: form.class.value,
         captain: form.captain.value.trim(),
         member2: form.member2.value.trim(),
         member3: form.member3.value.trim() || '—',
         phone: form.phone.value.trim(),
-        vex_exp: form.vex_exp.value,
         games: form.games.value,
         gamepad: form.gamepad.value,
-        racing: form.racing.value,
         rc_exp: form.rc_exp.value,
+        robotics_exp: form.robotics_exp.value,
     };
 
     // Submit
