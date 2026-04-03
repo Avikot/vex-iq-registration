@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Реєстрація — Турнір VEX IQ Clawbot</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f0f2fa;
+            color: #333;
+            min-height: 100vh;
+        }
+
+        /* ── Header ── */
+        .header {
+            background: linear-gradient(135deg, #002060 0%, #003087 50%, #1a479a 100%);
+            padding: 40px 20px 35px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before,
+        .header::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 200%;
+            background: #FFD100;
+            top: -50%;
+            transform: rotate(20deg);
+        }
+        .header::before { right: 60px; }
+        .header::after { right: 160px; opacity: 0.7; }
+
+        .header h1 {
+            font-family: Arial Black, Arial, sans-serif;
+            font-size: clamp(28px, 6vw, 52px);
+            color: #fff;
+            margin-bottom: 5px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .subtitle {
+            font-family: Arial Black, Arial, sans-serif;
+            font-size: clamp(18px, 4vw, 32px);
+            color: #FFD100;
+            margin-top: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .school {
+            font-size: clamp(14px, 2.5vw, 20px);
+            color: #ccdeff;
+            margin-top: 12px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header .accent-line {
+            width: 120px;
+            height: 4px;
+            background: #FFD100;
+            margin: 12px auto 0;
+            border-radius: 2px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ── Charity banner ── */
+        .charity-banner {
+            background: #FFD100;
+            text-align: center;
+            padding: 12px 20px;
+            font-weight: 900;
+            font-size: clamp(14px, 2.5vw, 18px);
+            color: #002060;
+            letter-spacing: 1px;
+        }
+
+        /* ── Info bar ── */
+        .info-bar {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            background: #003087;
+            padding: 0;
+            flex-wrap: wrap;
+        }
+
+        .info-item {
+            text-align: center;
+            padding: 15px 30px;
+            color: #fff;
+            flex: 1;
+            min-width: 150px;
+            border-right: 1px solid rgba(255,255,255,0.15);
+        }
+        .info-item:last-child { border-right: none; }
+
+        .info-item .num {
+            font-family: Arial Black, Arial, sans-serif;
+            font-size: 28px;
+            color: #FFD100;
+        }
+        .info-item .label {
+            font-size: 13px;
+            color: #aac4f0;
+            margin-top: 2px;
+        }
+
+        /* ── Main form ── */
+        .container {
+            max-width: 700px;
+            margin: 30px auto;
+            padding: 0 20px 40px;
+        }
+
+        .form-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,48,135,0.10);
+            padding: 35px 35px 30px;
+            margin-bottom: 24px;
+            border-top: 5px solid #003087;
+        }
+
+        .form-card.yellow-top {
+            border-top-color: #FFD100;
+        }
+
+        .form-card h2 {
+            font-family: Arial Black, Arial, sans-serif;
+            color: #003087;
+            font-size: 22px;
+            margin-bottom: 6px;
+        }
+
+        .form-card .section-desc {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .field {
+            margin-bottom: 22px;
+        }
+
+        .field label {
+            display: block;
+            font-weight: 700;
+            color: #002060;
+            margin-bottom: 6px;
+            font-size: 15px;
+        }
+
+        .field label .req {
+            color: #d32f2f;
+            margin-left: 2px;
+        }
+
+        .field input[type="text"],
+        .field input[type="tel"],
+        .field select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #d0d8e8;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+            transition: border-color 0.2s;
+            background: #fafbff;
+        }
+
+        .field input:focus,
+        .field select:focus {
+            outline: none;
+            border-color: #003087;
+            background: #fff;
+        }
+
+        .field .hint {
+            font-size: 13px;
+            color: #888;
+            margin-top: 4px;
+        }
+
+        /* Radio buttons */
+        .radio-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border: 2px solid #e0e4ef;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s;
+            background: #fafbff;
+        }
+
+        .radio-option:hover {
+            border-color: #003087;
+            background: #f0f4ff;
+        }
+
+        .radio-option input[type="radio"] {
+            accent-color: #003087;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .radio-option label {
+            font-weight: 400;
+            color: #333;
+            margin-bottom: 0;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        /* Submit */
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            background: #003087;
+            color: #fff;
+            font-family: Arial Black, Arial, sans-serif;
+            font-size: 20px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            letter-spacing: 1px;
+        }
+
+        .submit-btn:hover {
+            background: #002060;
+            transform: translateY(-1px);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .submit-btn:disabled {
+            background: #7a9cc7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Success message */
+        .success-msg {
+            display: none;
+            text-align: center;
+            padding: 40px 30px;
+        }
+
+        .success-msg .check {
+            width: 80px;
+            height: 80px;
+            background: #003087;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 40px;
+            color: #FFD100;
+        }
+
+        .success-msg h2 {
+            color: #003087;
+            font-size: 26px;
+            margin-bottom: 10px;
+        }
+
+        .success-msg p {
+            color: #555;
+            font-size: 16px;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #999;
+            font-size: 13px;
+        }
+
+        .footer a {
+            color: #003087;
+            text-decoration: none;
+        }
+
+        /* Error */
+        .field.error input,
+        .field.error select {
+            border-color: #d32f2f;
+        }
+
+        .field .error-msg {
+            color: #d32f2f;
+            font-size: 13px;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .field.error .error-msg {
+            display: block;
+        }
+
+        /* Loading spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 0.7s linear infinite;
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 600px) {
+            .form-card { padding: 24px 20px; }
+            .container { padding: 0 12px 30px; }
+            .info-item { padding: 12px 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+    <h1>VEX IQ Clawbot</h1>
+    <div class="accent-line"></div>
+    <div class="subtitle">ТУРНІР З РОБОТОТЕХНІКИ</div>
+    <div class="school">Великоомелянський ліцей &nbsp;|&nbsp; Реєстрація команд</div>
+</div>
+
+<!-- Charity -->
+<div class="charity-banner">БЛАГОДІЙНИЙ ТУРНІР НА ПІДТРИМКУ ЗСУ</div>
+
+<!-- Info bar -->
+<div class="info-bar">
+    <div class="info-item">
+        <div class="num">8</div>
+        <div class="label">команд</div>
+    </div>
+    <div class="info-item">
+        <div class="num">16-24</div>
+        <div class="label">учні</div>
+    </div>
+    <div class="info-item">
+        <div class="num">~1.5</div>
+        <div class="label">години</div>
+    </div>
+    <div class="info-item">
+        <div class="num">4</div>
+        <div class="label">роботи</div>
+    </div>
+</div>
+
+<div class="container">
+
+    <form id="regForm">
+
+    <!-- Section 1: Team info -->
+    <div class="form-card">
+        <h2>Інформація про команду</h2>
+        <p class="section-desc">Основні дані вашої команди</p>
+
+        <div class="field">
+            <label>Назва команди <span class="req">*</span></label>
+            <input type="text" name="team_name" required placeholder="Придумайте назву">
+            <div class="error-msg">Введіть назву команди</div>
+        </div>
+
+        <div class="field">
+            <label>Клас <span class="req">*</span></label>
+            <select name="class" required>
+                <option value="" disabled selected>Оберіть клас</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+            </select>
+            <div class="error-msg">Оберіть клас</div>
+        </div>
+    </div>
+
+    <!-- Section 2: Members -->
+    <div class="form-card yellow-top">
+        <h2>Учасники команди</h2>
+        <p class="section-desc">2-3 учні в кожній команді</p>
+
+        <div class="field">
+            <label>Капітан команди (ПІБ) <span class="req">*</span></label>
+            <input type="text" name="captain" required placeholder="Прізвище та ім'я">
+            <div class="error-msg">Введіть ПІБ капітана</div>
+        </div>
+
+        <div class="field">
+            <label>Другий учасник (ПІБ) <span class="req">*</span></label>
+            <input type="text" name="member2" required placeholder="Прізвище та ім'я">
+            <div class="error-msg">Введіть ПІБ другого учасника</div>
+        </div>
+
+        <div class="field">
+            <label>Третій учасник (ПІБ)</label>
+            <input type="text" name="member3" placeholder="За бажанням">
+            <div class="hint">Необов'язково — якщо у команді 3 учасники</div>
+        </div>
+
+        <div class="field">
+            <label>Контактний телефон (капітана або батьків) <span class="req">*</span></label>
+            <input type="tel" name="phone" required placeholder="+380...">
+            <div class="error-msg">Введіть номер телефону</div>
+        </div>
+    </div>
+
+    <!-- Section 3: Experience -->
+    <div class="form-card">
+        <h2>Досвід та навички</h2>
+        <p class="section-desc">Допоможе нам краще організувати турнір</p>
+
+        <div class="field">
+            <label>Чи маєте досвід роботи з роботами VEX IQ? <span class="req">*</span></label>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" name="vex_exp" id="vex_yes" value="Так" required>
+                    <label for="vex_yes">Так</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" name="vex_exp" id="vex_some" value="Трохи">
+                    <label for="vex_some">Трохи</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" name="vex_exp" id="vex_no" value="Ні">
+                    <label for="vex_no">Ні</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="field">
+            <label>Чи граєте ви в комп'ютерні ігри? <span class="req">*</span></label>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" name="games" id="games_reg" value="Так, регулярно" required>
+                    <label for="games_reg">Так, регулярно</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" name="games" id="games_some" value="Іноді">
+                    <label for="games_some">Іноді</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" name="games" id="games_rare" value="Рідко">
+                    <label for="games_rare">Рідко</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" name="games" id="games_no" value="Ні">
+                    <label for="games_no">Ні</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="field">
+            <label>Чи маєте досвід керування геймпадом (джойстиком)? <span class="req">*</span></label>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" name="gamepad" id="gp_yes" value="Так, граю постійно" required>
+                    <label for="gp_yes">Так, граю геймпадом постійно</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" name="gamepad" id="gp_some" value="Пробував кілька разів">
+                    <label for="gp_some">Пробував(-ла) кілька разів</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" name="gamepad" id="gp_no" value="Ніколи">
+                    <label for="gp_no">Ніколи не тримав(-ла) в руках</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="field">
+            <label>Чи грали ви в гоночні ігри або симулятори керування? <span class="req">*</span></label>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" name="racing" id="race_yes" value="Так" required>
+                    <label for="race_yes">Так</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" name="racing" id="race_no" value="Ні">
+                    <label for="race_no">Ні</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="field">
+            <label>Чи керували ви радіокерованою машинкою, дроном або роботом? <span class="req">*</span></label>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" name="rc_exp" id="rc_yes" value="Так, багато разів" required>
+                    <label for="rc_yes">Так, багато разів</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" name="rc_exp" id="rc_some" value="Пробував раз-два">
+                    <label for="rc_some">Пробував(-ла) раз-два</label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" name="rc_exp" id="rc_no" value="Ніколи">
+                    <label for="rc_no">Ніколи</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Submit -->
+    <button type="submit" class="submit-btn" id="submitBtn">ЗАРЕЄСТРУВАТИ КОМАНДУ</button>
+
+    <!-- Success -->
+    <div class="form-card success-msg" id="successMsg">
+        <div class="check">&#10003;</div>
+        <h2>Команду зареєстровано!</h2>
+        <p>Дякуємо за реєстрацію. Ми зв'яжемося з вами перед турніром.</p>
+        <p style="margin-top: 15px; color: #003087; font-weight: bold;">Слава Україні! &#x1F1FA;&#x1F1E6;</p>
+    </div>
+
+    </form>
+
+    <div class="footer">
+        Великоомелянський ліцей &copy; 2026<br>
+        Благодійний турнір на підтримку <a href="#">ЗСУ</a>
+    </div>
+</div>
+
+<script>
+// ── Google Apps Script URL — replace with your deployed URL ──
+const SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL';
+
+const form = document.getElementById('regForm');
+const submitBtn = document.getElementById('submitBtn');
+const successMsg = document.getElementById('successMsg');
+
+form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Clear errors
+    document.querySelectorAll('.field.error').forEach(f => f.classList.remove('error'));
+
+    // Validate required fields
+    let valid = true;
+    form.querySelectorAll('[required]').forEach(input => {
+        if (input.type === 'radio') {
+            const group = form.querySelectorAll(`[name="${input.name}"]`);
+            const checked = Array.from(group).some(r => r.checked);
+            if (!checked) {
+                valid = false;
+            }
+        } else if (!input.value.trim()) {
+            input.closest('.field').classList.add('error');
+            valid = false;
+        }
+    });
+
+    if (!valid) return;
+
+    // Collect data
+    const data = {
+        timestamp: new Date().toLocaleString('uk-UA'),
+        team_name: form.team_name.value.trim(),
+        class: form.class.value,
+        captain: form.captain.value.trim(),
+        member2: form.member2.value.trim(),
+        member3: form.member3.value.trim() || '—',
+        phone: form.phone.value.trim(),
+        vex_exp: form.vex_exp.value,
+        games: form.games.value,
+        gamepad: form.gamepad.value,
+        racing: form.racing.value,
+        rc_exp: form.rc_exp.value,
+    };
+
+    // Submit
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = '<span class="spinner"></span>Відправляємо...';
+
+    try {
+        await fetch(SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+        });
+
+        // Show success
+        form.querySelectorAll('.form-card').forEach(c => c.style.display = 'none');
+        submitBtn.style.display = 'none';
+        successMsg.style.display = 'block';
+    } catch (err) {
+        alert('Помилка відправки. Спробуйте ще раз.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'ЗАРЕЄСТРУВАТИ КОМАНДУ';
+    }
+});
+
+// Clear error on input
+document.querySelectorAll('.field input, .field select').forEach(el => {
+    el.addEventListener('input', () => {
+        el.closest('.field').classList.remove('error');
+    });
+});
+</script>
+
+</body>
+</html>
