@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Реєстрація — Турнір VEX IQ Clawbot</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Inter', Arial, sans-serif;
             background: #f0f2fa;
             color: #333;
             min-height: 100vh;
@@ -16,8 +18,8 @@
 
         /* ── Header ── */
         .header {
-            background: linear-gradient(135deg, #002060 0%, #003087 50%, #1a479a 100%);
-            padding: 40px 20px 35px;
+            background: linear-gradient(135deg, #001845 0%, #003087 40%, #1a479a 100%);
+            padding: 50px 20px 45px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -33,134 +35,181 @@
             top: -50%;
             transform: rotate(20deg);
         }
-        .header::before { right: 60px; }
-        .header::after { right: 160px; opacity: 0.7; }
+        .header::before { right: 60px; opacity: 0.9; }
+        .header::after { right: 170px; opacity: 0.5; }
 
-        .header h1 {
-            font-family: Arial Black, Arial, sans-serif;
-            font-size: clamp(28px, 6vw, 52px);
-            color: #fff;
-            margin-bottom: 5px;
+        /* Subtle grid pattern */
+        .header-grid {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            z-index: 0;
+        }
+
+        .header-content {
             position: relative;
             z-index: 1;
+        }
+
+        .header-badge {
+            display: inline-block;
+            background: rgba(255, 209, 0, 0.15);
+            border: 1px solid rgba(255, 209, 0, 0.3);
+            border-radius: 100px;
+            padding: 6px 20px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #FFD100;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-size: clamp(32px, 7vw, 58px);
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 6px;
+            letter-spacing: -1px;
         }
 
         .header .subtitle {
-            font-family: Arial Black, Arial, sans-serif;
-            font-size: clamp(18px, 4vw, 32px);
+            font-size: clamp(18px, 4vw, 30px);
+            font-weight: 800;
             color: #FFD100;
-            margin-top: 8px;
-            position: relative;
-            z-index: 1;
+            margin-top: 4px;
         }
 
         .header .school {
-            font-size: clamp(14px, 2.5vw, 20px);
-            color: #ccdeff;
-            margin-top: 12px;
-            position: relative;
-            z-index: 1;
+            font-size: clamp(13px, 2.5vw, 17px);
+            color: rgba(255,255,255,0.6);
+            margin-top: 16px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
         .header .accent-line {
-            width: 120px;
+            width: 60px;
             height: 4px;
             background: #FFD100;
-            margin: 12px auto 0;
+            margin: 14px auto 0;
             border-radius: 2px;
-            position: relative;
-            z-index: 1;
         }
 
         /* ── Charity banner ── */
         .charity-banner {
             background: #FFD100;
             text-align: center;
-            padding: 12px 20px;
-            font-weight: 900;
-            font-size: clamp(14px, 2.5vw, 18px);
+            padding: 13px 20px;
+            font-weight: 800;
+            font-size: clamp(13px, 2.5vw, 16px);
             color: #002060;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         /* ── Info bar ── */
         .info-bar {
             display: flex;
             justify-content: center;
-            gap: 0;
-            background: #003087;
+            background: linear-gradient(180deg, #002870 0%, #003087 100%);
             padding: 0;
             flex-wrap: wrap;
         }
 
         .info-item {
             text-align: center;
-            padding: 15px 30px;
+            padding: 18px 35px;
             color: #fff;
             flex: 1;
-            min-width: 150px;
-            border-right: 1px solid rgba(255,255,255,0.15);
+            min-width: 140px;
+            border-right: 1px solid rgba(255,255,255,0.08);
+            position: relative;
         }
         .info-item:last-child { border-right: none; }
 
         .info-item .num {
-            font-family: Arial Black, Arial, sans-serif;
-            font-size: 28px;
+            font-size: 32px;
+            font-weight: 900;
             color: #FFD100;
+            line-height: 1;
         }
         .info-item .label {
-            font-size: 13px;
-            color: #aac4f0;
-            margin-top: 2px;
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+            margin-top: 4px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* ── Main form ── */
         .container {
-            max-width: 700px;
-            margin: 30px auto;
+            max-width: 680px;
+            margin: 32px auto;
             padding: 0 20px 40px;
         }
 
         .form-card {
             background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 4px 24px rgba(0,48,135,0.10);
-            padding: 35px 35px 30px;
-            margin-bottom: 24px;
-            border-top: 5px solid #003087;
+            border-radius: 20px;
+            box-shadow: 0 2px 20px rgba(0,48,135,0.06), 0 0 0 1px rgba(0,48,135,0.04);
+            padding: 32px 32px 28px;
+            margin-bottom: 20px;
+            border-top: none;
+            position: relative;
+            overflow: hidden;
         }
 
-        .form-card.yellow-top {
-            border-top-color: #FFD100;
+        .form-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #003087, #1a5ccc);
+        }
+
+        .form-card.yellow-top::before {
+            background: linear-gradient(90deg, #FFD100, #ffe066);
         }
 
         .form-card h2 {
-            font-family: Arial Black, Arial, sans-serif;
             color: #003087;
-            font-size: 22px;
-            margin-bottom: 6px;
+            font-size: 20px;
+            font-weight: 800;
+            margin-bottom: 4px;
         }
 
         .form-card .section-desc {
-            color: #666;
+            color: #8891a5;
             font-size: 14px;
-            margin-bottom: 20px;
+            margin-bottom: 24px;
+            font-weight: 400;
         }
 
         .field {
-            margin-bottom: 22px;
+            margin-bottom: 24px;
+        }
+
+        .field:last-child {
+            margin-bottom: 8px;
         }
 
         .field label {
             display: block;
-            font-weight: 700;
-            color: #002060;
-            margin-bottom: 6px;
-            font-size: 15px;
+            font-weight: 600;
+            color: #1a2744;
+            margin-bottom: 8px;
+            font-size: 14px;
         }
 
         .field label .req {
-            color: #d32f2f;
+            color: #e53935;
             margin-left: 2px;
         }
 
@@ -168,13 +217,18 @@
         .field input[type="tel"],
         .field select {
             width: 100%;
-            padding: 12px 16px;
-            border: 2px solid #d0d8e8;
-            border-radius: 10px;
-            font-size: 16px;
-            font-family: Arial, sans-serif;
-            transition: border-color 0.2s;
-            background: #fafbff;
+            padding: 13px 16px;
+            border: 1.5px solid #e0e5f0;
+            border-radius: 12px;
+            font-size: 15px;
+            font-family: 'Inter', Arial, sans-serif;
+            transition: all 0.2s ease;
+            background: #f8f9fc;
+            color: #333;
+        }
+
+        .field input::placeholder {
+            color: #b0b8c9;
         }
 
         .field input:focus,
@@ -182,48 +236,69 @@
             outline: none;
             border-color: #003087;
             background: #fff;
+            box-shadow: 0 0 0 3px rgba(0,48,135,0.08);
         }
 
-        .field .hint {
-            font-size: 13px;
-            color: #888;
-            margin-top: 4px;
+        .field select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23667' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 14px center;
+            padding-right: 40px;
+            cursor: pointer;
         }
 
         /* Radio buttons */
         .radio-group {
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            margin-top: 4px;
+            gap: 10px;
+            margin-top: 6px;
         }
 
         .radio-option {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 10px 14px;
-            border: 2px solid #e0e4ef;
-            border-radius: 10px;
+            gap: 12px;
+            padding: 13px 16px;
+            border: 1.5px solid #e0e5f0;
+            border-radius: 12px;
             cursor: pointer;
-            transition: all 0.2s;
-            background: #fafbff;
+            transition: all 0.2s ease;
+            background: #f8f9fc;
         }
 
         .radio-option:hover {
             border-color: #003087;
             background: #f0f4ff;
+            box-shadow: 0 0 0 3px rgba(0,48,135,0.05);
+        }
+
+        .radio-option:has(input:checked) {
+            border-color: #003087;
+            background: #eef2ff;
+            box-shadow: 0 0 0 3px rgba(0,48,135,0.08);
         }
 
         .radio-option input[type="radio"] {
-            accent-color: #003087;
-            width: 18px;
-            height: 18px;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #c0c8d8;
+            border-radius: 50%;
             cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .radio-option input[type="radio"]:checked {
+            border-color: #003087;
+            border-width: 6px;
         }
 
         .radio-option label {
-            font-weight: 400;
+            font-weight: 500;
             color: #333;
             margin-bottom: 0;
             cursor: pointer;
@@ -234,87 +309,100 @@
         .submit-btn {
             display: block;
             width: 100%;
-            padding: 16px;
-            background: #003087;
+            padding: 17px;
+            background: linear-gradient(135deg, #003087, #1a4caa);
             color: #fff;
-            font-family: Arial Black, Arial, sans-serif;
-            font-size: 20px;
+            font-family: 'Inter', Arial, sans-serif;
+            font-size: 17px;
+            font-weight: 800;
             border: none;
-            border-radius: 12px;
+            border-radius: 14px;
             cursor: pointer;
-            transition: background 0.2s, transform 0.1s;
-            letter-spacing: 1px;
+            transition: all 0.25s ease;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            box-shadow: 0 4px 16px rgba(0,48,135,0.25);
         }
 
         .submit-btn:hover {
-            background: #002060;
-            transform: translateY(-1px);
+            background: linear-gradient(135deg, #002060, #003087);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(0,48,135,0.35);
         }
 
         .submit-btn:active {
             transform: translateY(0);
+            box-shadow: 0 2px 8px rgba(0,48,135,0.2);
         }
 
         .submit-btn:disabled {
-            background: #7a9cc7;
+            background: #8eaad4;
             cursor: not-allowed;
             transform: none;
+            box-shadow: none;
         }
 
         /* Success message */
         .success-msg {
             display: none;
             text-align: center;
-            padding: 40px 30px;
+            padding: 50px 30px;
         }
 
         .success-msg .check {
-            width: 80px;
-            height: 80px;
-            background: #003087;
+            width: 88px;
+            height: 88px;
+            background: linear-gradient(135deg, #003087, #1a5ccc);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 40px;
+            margin: 0 auto 24px;
+            font-size: 42px;
             color: #FFD100;
+            box-shadow: 0 8px 32px rgba(0,48,135,0.2);
         }
 
         .success-msg h2 {
             color: #003087;
-            font-size: 26px;
+            font-size: 28px;
+            font-weight: 800;
             margin-bottom: 10px;
         }
 
         .success-msg p {
-            color: #555;
+            color: #666;
             font-size: 16px;
+            line-height: 1.6;
         }
 
         /* Footer */
         .footer {
             text-align: center;
-            padding: 20px;
-            color: #999;
+            padding: 24px 20px;
+            color: #aab0c0;
             font-size: 13px;
+            font-weight: 500;
         }
 
         .footer a {
             color: #003087;
             text-decoration: none;
+            font-weight: 600;
         }
 
         /* Error */
         .field.error input,
         .field.error select {
-            border-color: #d32f2f;
+            border-color: #e53935;
+            box-shadow: 0 0 0 3px rgba(229,57,53,0.1);
         }
 
         .field .error-msg {
-            color: #d32f2f;
+            color: #e53935;
             font-size: 13px;
-            margin-top: 4px;
+            font-weight: 500;
+            margin-top: 6px;
             display: none;
         }
 
@@ -339,10 +427,38 @@
             to { transform: rotate(360deg); }
         }
 
+        /* ── Progress indicator ── */
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 28px;
+        }
+
+        .step-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #d0d8e8;
+            transition: all 0.3s;
+        }
+
+        .step-dot.active {
+            background: #003087;
+            width: 32px;
+            border-radius: 5px;
+        }
+
+        .step-dot.done {
+            background: #FFD100;
+        }
+
         @media (max-width: 600px) {
-            .form-card { padding: 24px 20px; }
-            .container { padding: 0 12px 30px; }
-            .info-item { padding: 12px 16px; }
+            .header { padding: 36px 16px 32px; }
+            .form-card { padding: 24px 20px 20px; border-radius: 16px; }
+            .container { padding: 0 12px 30px; margin-top: 24px; }
+            .info-item { padding: 14px 16px; }
+            .submit-btn { border-radius: 12px; }
         }
     </style>
 </head>
@@ -350,14 +466,18 @@
 
 <!-- Header -->
 <div class="header">
-    <h1>VEX IQ Clawbot</h1>
-    <div class="accent-line"></div>
-    <div class="subtitle">ТУРНІР З РОБОТОТЕХНІКИ</div>
-    <div class="school">Великоомелянський ліцей &nbsp;|&nbsp; Реєстрація команд</div>
+    <div class="header-grid"></div>
+    <div class="header-content">
+        <div class="header-badge">Реєстрація відкрита</div>
+        <h1>VEX IQ Clawbot</h1>
+        <div class="accent-line"></div>
+        <div class="subtitle">ТУРНІР З РОБОТОТЕХНІКИ</div>
+        <div class="school">Великоомелянський ліцей &nbsp;&middot;&nbsp; Реєстрація команд</div>
+    </div>
 </div>
 
 <!-- Charity -->
-<div class="charity-banner">БЛАГОДІЙНИЙ ТУРНІР НА ПІДТРИМКУ ЗСУ</div>
+<div class="charity-banner">Благодійний турнір на підтримку ЗСУ</div>
 
 <!-- Info bar -->
 <div class="info-bar">
@@ -381,10 +501,16 @@
 
 <div class="container">
 
+    <!-- Progress -->
+    <div class="step-indicator">
+        <div class="step-dot active"></div>
+        <div class="step-dot"></div>
+    </div>
+
     <form id="regForm">
 
     <!-- Section 1: Team info -->
-    <div class="form-card">
+    <div class="form-card" data-step="1">
         <h2>Інформація про команду</h2>
         <p class="section-desc">Основні дані вашої команди</p>
 
@@ -419,7 +545,7 @@
     </div>
 
     <!-- Section 2: Experience -->
-    <div class="form-card yellow-top">
+    <div class="form-card yellow-top" data-step="2">
         <h2>Досвід та навички</h2>
         <p class="section-desc">Допоможе нам краще організувати турнір</p>
 
@@ -477,39 +603,50 @@
     </div>
 
     <!-- Submit -->
-    <button type="submit" class="submit-btn" id="submitBtn">ЗАРЕЄСТРУВАТИ КОМАНДУ</button>
+    <button type="submit" class="submit-btn" id="submitBtn">Зареєструвати команду</button>
 
     <!-- Success -->
     <div class="form-card success-msg" id="successMsg">
         <div class="check">&#10003;</div>
         <h2>Команду зареєстровано!</h2>
-        <p>Дякуємо за реєстрацію. Ми зв'яжемося з вами перед турніром.</p>
-        <p style="margin-top: 15px; color: #003087; font-weight: bold;">Слава Україні! &#x1F1FA;&#x1F1E6;</p>
+        <p>Дякуємо за реєстрацію.<br>Ми зв'яжемося з вами перед турніром.</p>
+        <p style="margin-top: 18px; color: #003087; font-weight: 700;">Слава Україні! &#x1F1FA;&#x1F1E6;</p>
     </div>
 
     </form>
 
     <div class="footer">
-        Великоомелянський ліцей &copy; 2026<br>
+        Великоомелянський ліцей &copy; 2026 &nbsp;&middot;&nbsp;
         Благодійний турнір на підтримку <a href="#">ЗСУ</a>
     </div>
 </div>
 
 <script>
-// ── Google Apps Script URL — replace with your deployed URL ──
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzwnFtlT5fpyMFFXk5H52Mi3lvamoUy95AbyK0GaQaSC8vXqbNdmy8sJAAg2HvC7Agbwg/exec';
 
 const form = document.getElementById('regForm');
 const submitBtn = document.getElementById('submitBtn');
 const successMsg = document.getElementById('successMsg');
+const dots = document.querySelectorAll('.step-dot');
+
+// Update progress dots on scroll/interaction
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+        if (e.isIntersecting && e.target.dataset.step === '2') {
+            dots[0].classList.remove('active');
+            dots[0].classList.add('done');
+            dots[1].classList.add('active');
+        }
+    });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('[data-step]').forEach(card => observer.observe(card));
 
 form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    // Clear errors
     document.querySelectorAll('.field.error').forEach(f => f.classList.remove('error'));
 
-    // Validate required fields
     let valid = true;
     form.querySelectorAll('[required]').forEach(input => {
         if (input.type === 'radio') {
@@ -524,9 +661,12 @@ form.addEventListener('submit', async (e) => {
         }
     });
 
-    if (!valid) return;
+    if (!valid) {
+        const firstErr = document.querySelector('.field.error');
+        if (firstErr) firstErr.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        return;
+    }
 
-    // Collect data
     const data = {
         timestamp: new Date().toLocaleString('uk-UA'),
         team_name: form.team_name.value.trim(),
@@ -540,7 +680,6 @@ form.addEventListener('submit', async (e) => {
         robotics_exp: form.robotics_exp.value,
     };
 
-    // Submit
     submitBtn.disabled = true;
     submitBtn.innerHTML = '<span class="spinner"></span>Відправляємо...';
 
@@ -552,18 +691,18 @@ form.addEventListener('submit', async (e) => {
             body: JSON.stringify(data),
         });
 
-        // Show success
         form.querySelectorAll('.form-card').forEach(c => c.style.display = 'none');
         submitBtn.style.display = 'none';
+        document.querySelector('.step-indicator').style.display = 'none';
         successMsg.style.display = 'block';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (err) {
         alert('Помилка відправки. Спробуйте ще раз.');
         submitBtn.disabled = false;
-        submitBtn.textContent = 'ЗАРЕЄСТРУВАТИ КОМАНДУ';
+        submitBtn.textContent = 'Зареєструвати команду';
     }
 });
 
-// Clear error on input
 document.querySelectorAll('.field input, .field select').forEach(el => {
     el.addEventListener('input', () => {
         el.closest('.field').classList.remove('error');
